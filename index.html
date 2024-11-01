@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" src="index.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="question1"> </p>
+    <div id="choices1"> </div>
+    <p id="check1"> </p>
+    <p id="question2"> </p>
+    <p id="choices2"> </p>
+    <p id="check2"> </p>
+
+    <button id="sample-btn" onclick="checkAnswer()">Button</button>
+
+    <script>
+        const questions = [
+            "sample question 1 | 1 | 2 | 3 | 4 | 2",
+            "sample question 2 | 1 | 2 | 3 | 4 | 3",
+            "sample question 3 | 4 | 3 | 2 | 1 | 4",
+            "sample question 4 | 1 | 2 | 3 | 4 | 1",
+        ];
+
+        let numberOfQuestions = 0;
+        let questionIndex1 = 0;
+        let questionIndex2 = 1;
+
+        const parts = questions[questionIndex1].split(" | ");
+        const questionText = parts[0];
+        const choices = parts.slice(1,5);
+        const answer = parts.slice(5);
+
+        document.getElementById('question1').innerText = questionText;
+
+        choiceList1 = document.getElementById('choices1');
+
+        let htmlChoice = '';
+
+        choices.forEach((choice, index) => {
+            htmlChoice += `
+                <input type="radio" name="question1" id="${index}" value="${choice}">
+                <label for="${index}">${choice}</label><br>
+            `;
+
+                });
+
+            document.getElementById('choices1').innerHTML = htmlChoice;
+    
+
+        // const parts2 = questions[questionIndex2].split(" | ");
+        // const questionText2 = parts2[0];
+        // const choices2 = parts.slice(1,5);
+        // const answer2 = parts.slice(5);
+
+        // document.getElementById('question2').innerText = questionText2;
+
+        // choiceList2 = document.getElementById('choices2');
+        // choices2.forEach(choice => {
+        //     const list2 = document.createElement('p');
+        //     list2.innerText = choice;
+        //     choiceList2.appendChild(list2);
+        //         })
+
+            function checkAnswer(){
+                let getSelectedChoice1 = document.querySelector('input[name="question1"]:checked'); 
+                if(getSelectedChoice1){
+                    console.log(getSelectedChoice1.value);
+                }
+            }
+       
+    </script>
+</body>
+</html>
